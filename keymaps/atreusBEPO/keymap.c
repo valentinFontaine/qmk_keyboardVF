@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     BP_AT,  BP_ACUT, KC_UP,   BP_OE,  BP_DLR,                   BP_DGRV,   BP_RNGA,   BP_PLMN,   BP_DEG,   BP_MUL  ,
     BP_AE,  KC_LEFT, KC_DOWN, KC_RGHT, BP_UNDS,                   BP_EURO, BP_SS,   BP_PERC,   BP_DTIL,   BP_DIV  ,
     BP_DCIR,   BP_UGRV, S(BP_LPRN),   S(BP_RPRN),   BP_PIPE,                     BP_NEQL,  BP_DGRK ,  BP_DIAE ,   BP_MACR,   BP_DSLS,
-    KC_ESC, KC_LGUI, KC_TAB,  KC_LSFT, KC_BSPC, KC_LALT,  KC_LCTL, KC_SPC,  MO(_NrPoints), MO(_AltGr), BP_CIRC, KC_ENT
+    KC_ESC, KC_LGUI, KC_TAB,  KC_LSFT, KC_DEL, KC_LALT,  KC_LCTL, KC_SPC,  MO(_NrPoints), MO(_AltGr), BP_CIRC, KC_ENT
     )
 };
 

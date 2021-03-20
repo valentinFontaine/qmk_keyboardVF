@@ -5,6 +5,9 @@
 #include "keymap_bepo.h"
 #include "sendstring_bepo.h"
 
+#include "keymap_french.h"
+
+
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
@@ -12,7 +15,12 @@
 #define _BEPO 0
 #define _NrPoints 1
 #define _AltGr 2
-//#define _Functions 3
+#define _Functions 3
+#define _UpperNrPoints 4
+
+#define FR_ECIR 
+
+
 
 
 //Attention !!!! les deux touches du milieu sont branchées à l'envers....
@@ -22,37 +30,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * B    É   P   O   V               ||      È   D   L   J   W
      * A    U   I   E   C               ||      T   S   R   N   M
-     * Ê    À   Y   K   X               ||      Q   G   H   F   W
-     * Esc  Win Tab Sft Bksp    ctrl    ||  alt Spc L1  L2  Ç   Z
+     * Ê    À   Y   K   X               ||      Q   G   H   F   Z
+     * Esc  Win Tab Sft Bksp    ctrl    ||  alt Spc L1  L2  Ç   Ent
      */
-    BP_B,    BP_EACU,    BP_P,    BP_O,    BP_V,                      BP_EGRV,    BP_D,    BP_L,    BP_J,    BP_W,
-    BP_A,    BP_U,      BP_I,    BP_E,    BP_C,                      BP_T,    BP_S,    BP_R,    BP_N,    BP_M ,
-    BP_ECIR,    BP_AGRV,    BP_Y,    BP_K,    BP_X,                      BP_Q,    BP_G,    BP_H, BP_F,  BP_Z ,
-    KC_ESC, KC_LGUI, KC_TAB,  KC_LSFT, KC_BSPC, KC_LALT,  KC_LCTL, KC_SPC,  MO(_NrPoints), MO(_AltGr), BP_CCED, KC_ENT
+    FR_B,    FR_EACU,    FR_P,    FR_O,    FR_V,                      FR_EGRV,    FR_D,    FR_L,    FR_J,    FR_W,
+    FR_A,    FR_U,      FR_I,    FR_E,    FR_C,                      FR_T,    FR_S,    FR_R,    FR_N,    FR_M ,
+    FR_E,    FR_AGRV,    FR_Y,    FR_K,    FR_X,                      FR_Q,    FR_G,    FR_H, FR_F,  FR_Z ,
+    KC_ESC, KC_LGUI, KC_TAB,  KC_LSFT, KC_BSPC, KC_LALT,  KC_LCTL, KC_SPC,  MO(_NrPoints), MO(_AltGr), FR_CCED, KC_ENT
   ),
 
   /*
-   *  !       @     up     {    }        ||     pgup    7     8     9    *
-   *  #     left   down  right  $        ||     pgdn    4     5     6    +
-   *  [       ]      (     )    &        ||       `     1     2     3    \
-   * lower  insert super shift bksp ctrl || alt space   fn    .     0    =
+   *  !       ?     {     }     \        ||       -     7     8     9    *
+   *  "       '     (     )     .        ||       ,     4     5     6    +
+   *  [       ]     <     >     &        ||       =     1     2     3    \
+   *  ESC    Win   Tab   sft bksp   ctrl || alt space   L1    L2    0    Ent
    */
   [_NrPoints] = LAYOUT( /* [> RAISE <] */
-    BP_EXLM, BP_QUES,   BP_LCBR,   BP_RCBR, BP_BSLS,               BP_MINS, BP_7,    BP_8,   BP_9, BP_ASTR ,
-    BP_DQUO, BP_QUOT, BP_LPRN, BP_RPRN, BP_DOT,                    BP_COMM, BP_4,    BP_5,   BP_6, BP_PLUS ,
-    BP_LBRC, BP_RBRC, BP_LABK, BP_RABK, BP_AMPR,                   BP_EQL,  BP_1,    BP_2,   BP_3, BP_SLSH ,
-    KC_ESC, KC_INS,  KC_LGUI, KC_LSFT, KC_BSPC, KC_LALT, KC_LCTL, KC_SPC,  MO(_NrPoints), MO(_AltGr), BP_0, KC_ENT  ),
+    FR_EXLM, FR_QUES,   FR_LCBR,   FR_RCBR, FR_BSLS,               FR_MINS, FR_7,    FR_8,   FR_9, FR_ASTR ,
+    FR_DQUO, FR_QUOT, FR_LPRN, FR_RPRN, FR_DOT,                    FR_COMM, FR_4,    FR_5,   FR_6, FR_PLUS ,
+    FR_LBRC, FR_RBRC, FR_LABK, FR_RABK, FR_AMPR,                   FR_EQL,  FR_1,    FR_2,   FR_3, FR_SLSH ,
+    KC_ESC, KC_LGUI,  KC_TAB, MO(_UpperNrPoints), KC_BSPC, KC_LALT, KC_LCTL, KC_SPC,  MO(_NrPoints), MO(_AltGr), FR_0, KC_ENT  ),
   /*
-   * insert home   up  end   pgup       ||      up     F7    F8    F9   F10
-   *  del   left  down right pgdn       ||     down    F4    F5    F6   F11
-   *       volup             reset      ||             F1    F2    F3   F12
+   *  !       ?     {     }     \        ||       -     7     8     9    *
+   *  "       '     (     )     .        ||       ,     4     5     6    +
+   *  [       ]     <     >     &        ||       =     1     2     3    \
+   *  ESC    Win   Tab   sft bksp   ctrl || alt space   L1    L2    0    Ent
+   */
+  [_UpperNrPoints] = LAYOUT( /* [> RAISE <] */
+    FR_EXLM, FR_QUES,   FR_LCBR,   FR_RCBR, FR_BSLS,               FR_MINS, FR_7,    FR_8,   FR_9, FR_ASTR ,
+    FR_DQUO, FR_QUOT, FR_LPRN, FR_RPRN, FR_COLN,                   FR_SCLN, FR_4,    FR_5,   FR_6, FR_PLUS ,
+    FR_LBRC, FR_RBRC, FR_LABK, FR_RABK, FR_AMPR,                   FR_EQL,  FR_1,    FR_2,   FR_3, FR_SLSH ,
+    KC_ESC, KC_LGUI,  KC_TAB, KC_LSFT, KC_BSPC, KC_LALT, KC_LCTL, KC_SPC,  MO(_NrPoints), MO(_AltGr), FR_0, KC_ENT  ),
+  /*
+   *  @      ´     up    #     $        ||     `       °     ±      °    ×
+   *  æ   left    down right   _        ||     €       ß     %      ~    ÷       
+   *  ^   ù        4     5     |        ||     ≠       µ     ¨      ¯    /
    *       voldn  super shift bksp ctrl || alt space   L0  prtsc scroll pause
    */
   [_AltGr] = LAYOUT( /* [> LOWER <] */
-    BP_AT,  BP_ACUT, KC_UP,   BP_OE,  BP_DLR,                   BP_DGRV,   BP_RNGA,   BP_PLMN,   BP_DEG,   BP_MUL  ,
-    BP_AE,  KC_LEFT, KC_DOWN, KC_RGHT, BP_UNDS,                   BP_EURO, BP_SS,   BP_PERC,   BP_DTIL,   BP_DIV  ,
-    BP_DCIR,   BP_UGRV, S(BP_LPRN),   S(BP_RPRN),   BP_PIPE,                     BP_NEQL,  BP_DGRK ,  BP_DIAE ,   BP_MACR,   BP_DSLS,
-    KC_ESC, KC_LGUI, KC_TAB,  KC_LSFT, KC_DEL, KC_LALT,  KC_LCTL, KC_SPC,  MO(_NrPoints), MO(_AltGr), BP_CIRC, KC_ENT
+    FR_AT,    FR_DEG,  KC_UP,      FR_EURO,      FR_DLR,                   FR_GRV,   KC_F7,  KC_F8,  KC_F9, KC_F10,
+    FR_TILD,    KC_LEFT, KC_DOWN,    KC_RGHT,      FR_UNDS,                KC__VOLUP,  KC_F4,  KC_F5,  KC_F6, KC_F11,
+    FR_CIRC,  FR_UGRV, FR_PERC,    FR_DIAE,      FR_PIPE,                  KC__VOLDOWN,  KC_F1,  KC_F2 , KC_F3, KC_F12,
+    KC_ESC,   KC_LGUI, KC_TAB,     KC_LSFT,      KC_DEL, KC_LALT, KC_LCTL, KC_SPC, MO(_NrPoints), MO(_AltGr), FR_CIRC, KC_ENT
     )
 };
 
